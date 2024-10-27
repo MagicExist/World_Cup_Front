@@ -1,20 +1,21 @@
 <div class="row w-50 mt-3">
     <div class="col col-6">
-        <select (change)="UserChampionShipSelected()" class="form-select" aria-label="Default select example">
-            <option selected>ChampionShips</option>
+        <select  [(ngModel)]="selectedChampionShip" (ngModelChange)="UserChampionShipSelected()" class="form-select" aria-label="Default select example">
+            <option [ngValue]="null" disabled selected>ChampionShips</option>
             @for (championShip of ChampionShipList; track $index) 
             {
-              <option>{{championShip.name}}</option>                  
+              <option [ngValue]="championShip">{{championShip.name}}</option>                  
             }
         </select>
     </div>
     <div class="col col-6">
-        <select class="form-select" aria-label="Default select example">
-            <option selected>Groups</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>s
+        <select [(ngModel)]="selectedGroup" (ngModelChange)="UserGroupSelected()" class="form-select" aria-label="Default select example">
+            <option [ngValue]="null" disabled selected>Groups</option>
+            @for (group of GroupList; track $index) 
+            {
+              <option [ngValue]="group">{{group.group}}</option>                  
+            }
+        </select>
     </div>
 </div>
 <app-positions-table></app-positions-table>
